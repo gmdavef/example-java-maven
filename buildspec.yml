@@ -16,4 +16,4 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - example-java-maven
+    - target/example-java-maven-1.0-SNAPSHOT.jar
