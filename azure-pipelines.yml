@@ -7,9 +7,9 @@ trigger:
 - master
 
 pool:
-#  vmImage: ubuntu-latest
+  vmImage: ubuntu-latest
 #  vmImage: "vs2017-win2016"
-  vmImage: windows-latest
+#  vmImage: windows-latest
   
 steps:
 #- task: Maven@3
@@ -23,13 +23,21 @@ steps:
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 #    goals: 'package'
 
-- task: PowerShell@2
+#- task: PowerShell@2
+#  displayName: 'Veracode SCA scan'
+#  env: {SRCCLR_API_TOKEN: $(apiToken)}
+#  inputs:
+#   targetType: 'inline'
+#   script: |
+#    Set-ExecutionPolicy AllSigned -Scope Process -Force
+#    $ProgressPreference = "SilentlyContinue"
+#    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
+#    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor
+- task: Bash@3
   displayName: 'Veracode SCA scan'
-  env: {SRCCLR_API_TOKEN: $(apiToken)}
   inputs:
-   targetType: 'inline'
-   script: |
-    Set-ExecutionPolicy AllSigned -Scope Process -Force
-    $ProgressPreference = "SilentlyContinue"
-    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
-    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor
+     targetType: 'inline'
+     script: |
+          export SRCCLR_API_TOKEN="$(apiToken)"
+          curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan
+
