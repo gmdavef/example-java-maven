@@ -41,3 +41,7 @@ steps:
           export SRCCLR_API_TOKEN="$(apiToken)"
           curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: $(System.DefaultWorkingDirectory)/SCA_Results.txt
+    artifactName: SCA-scan-results
