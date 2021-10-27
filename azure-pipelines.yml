@@ -39,5 +39,5 @@ steps:
      targetType: 'inline'
      script: |
           export SRCCLR_API_TOKEN="$(apiToken)"
-          curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA
+          curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA --debug
 
