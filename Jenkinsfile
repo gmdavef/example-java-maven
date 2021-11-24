@@ -1,14 +1,10 @@
 pipeline {
     agent any
 
-  //  environment {
-  //      def mvnHome = tool 'my-maven'
-  //  }
-
     stages {
         stage('----Pull----') {
             steps {
-                git 'https://github.com/gmdavef/example-java-maven'
+                git 'https://github.com/gmdavef/example-java-maven.git'
             }
         }
         stage('----Build----') {
