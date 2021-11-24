@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        def mvnHome = tool 'my-maven'
-    }
+  //  environment {
+  //      def mvnHome = tool 'my-maven'
+  //  }
 
     stages {
         stage('----Pull----') {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('----Build----') {
             steps {
-                sh "${mvnHome}/bin/mvn clean package"
+                sh 'mvn clean package'
             }
         }
         stage('-----SCA-Agent-Scan-----') {
