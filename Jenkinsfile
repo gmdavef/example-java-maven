@@ -11,7 +11,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo '---BUILD---'
-                sh 'mvn clean package'
+                withMaven {
+                    sh "mvn clean package"
+                }
             }
         }
         stage('SCA-Scan') {
