@@ -17,7 +17,7 @@ pipeline {
         stage('SCA-Scan') {
             steps {
                 echo '---SCA AGENT SCAN---'
-                sh "curl -sSL https://download.sourceclear.com/ci.sh | sh"
+                sh "curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA"
             }
         }
         
