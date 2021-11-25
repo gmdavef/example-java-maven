@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo '---BUILD---'
-               // sh 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
         stage('SCA-Scan') {
