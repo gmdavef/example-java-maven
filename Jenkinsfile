@@ -2,23 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('----Pull----') {
+        stage('Pull') {
             steps {
+                echo '---PULL---'
                 git 'https://github.com/gmdavef/example-java-maven.git'
             }
         }
-        stage('----Build----') {
+        stage('Build') {
             steps {
                // sh 'mvn clean package'
-                echo 'This is a minimal pipeline.'
+                echo '---BUILD---'
             }
         }
-        stage('-----SCA-Agent-Scan-----') {
+        stage('SCA-Scan') {
             steps {
+                echo '---SCA AGENT SCAN---'
                 withCredentials([string(credentialsId: 'SRCCLR_API_TOKEN', variable: 'SRCCLR_API_TOKEN')]) {
-                    sh '''
-                        curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA --update-advisor
-                    '''
+                    script {
+                        sh "curl -sSL https://download.sourceclear.com/ci.sh | sh"
+                    }
                 }
             }
         }
