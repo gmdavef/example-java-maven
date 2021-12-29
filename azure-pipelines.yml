@@ -26,6 +26,7 @@ steps:
 - task: PowerShell@2
   displayName: 'Veracode SCA scan'
   env: {SRCCLR_API_TOKEN: $(apiToken)}
+  env: {DEBUG: 1}
   inputs:
    targetType: 'inline'
    script: |
