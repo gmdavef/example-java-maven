@@ -24,23 +24,23 @@ steps:
 #    goals: 'package'
 
 - task: PowerShell@2
-  displayName: 'Veracode SCA scan'
-  env: {SRCCLR_API_TOKEN: $(apiToken)} {DEBUG: 1}
-  inputs:
-   targetType: 'inline'
-   script: |
-    Set-ExecutionPolicy AllSigned -Scope Process -Force
-    $ProgressPreference = "SilentlyContinue"
-    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
-    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
-
-#- task: Bash@3
 #  displayName: 'Veracode SCA scan'
+#  env: {SRCCLR_API_TOKEN: $(apiToken)}
 #  inputs:
-#     targetType: 'inline'
-#     script: |
-#          export SRCCLR_API_TOKEN="$(apiToken)"
-#          curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
+#   targetType: 'inline'
+#   script: |
+#    Set-ExecutionPolicy AllSigned -Scope Process -Force
+#    $ProgressPreference = "SilentlyContinue"
+#    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
+#    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
+
+- task: Bash@3
+  displayName: 'Veracode SCA scan'
+  inputs:
+     targetType: 'inline'
+     script: |
+          export SRCCLR_API_TOKEN="$(apiToken)"
+          curl -sSL https://download.sourceclear.com/ci.sh | DEBUG=1 bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
 
 - task: PublishPipelineArtifact@1
   inputs:
