@@ -23,7 +23,7 @@ steps:
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 #    goals: 'package'
 
-- task: PowerShell@2
+#- task: PowerShell@2
 #  displayName: 'Veracode SCA scan'
 #  env: {SRCCLR_API_TOKEN: $(apiToken)}
 #  inputs:
