@@ -20,3 +20,11 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: Bash@3
+  displayName: 'Veracode SCA scan'
+  inputs:
+     targetType: 'inline'
+     script: |
+          export SRCCLR_API_TOKEN="$(apiToken)"
+          curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA 
