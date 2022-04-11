@@ -29,9 +29,10 @@ steps:
   inputs:
    targetType: 'inline'
    script: |
+    Write-Host "Current Policy:"
     Get-ExecutionPolicy -List
     Set-ExecutionPolicy AllSigned -Scope Process -Force
-    Write-Output "Updated:"
+    Write-Host "Updated Policy:"
     Get-ExecutionPolicy -List
     $ProgressPreference = "SilentlyContinue"
     iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
