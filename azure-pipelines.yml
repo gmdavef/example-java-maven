@@ -25,14 +25,15 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Veracode SCA scan'
-  env: {SRCCLR_API_TOKEN: $(apiToken), DEBUG: "1"}
+  #env: {SRCCLR_API_TOKEN: $(apiToken), DEBUG: "1"}
+  env: {SRCCLR_API_TOKEN: $(apiToken)}
   inputs:
    targetType: 'inline'
    script: |
     Set-ExecutionPolicy AllSigned -Scope Process -Force
     $ProgressPreference = "SilentlyContinue"
     iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
-    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
+    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
 
 #- task: Bash@3
 #  displayName: 'Veracode SCA scan'
