@@ -30,10 +30,10 @@ steps:
    targetType: 'inline'
    script: |
     Write-Host "Current Policy:"
-    Get-ExecutionPolicy -List
+    Get-ExecutionPolicy -List -Scope CurrentUser
     Set-ExecutionPolicy AllSigned -Scope Process -Force
     Write-Host "Updated Policy:"
-    Get-ExecutionPolicy -List
+    Get-ExecutionPolicy -List -Scope CurrentUser
     $ProgressPreference = "SilentlyContinue"
     iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
     srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
