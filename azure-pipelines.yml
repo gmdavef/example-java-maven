@@ -29,7 +29,10 @@ steps:
   inputs:
    targetType: 'inline'
    script: |
-    # Set-ExecutionPolicy AllSigned -Scope Process -Force
+    Get-ExecutionPolicy -List
+    Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope Process -Force
+    Write-Output "Updated:"
+    Get-ExecutionPolicy -List
     $ProgressPreference = "SilentlyContinue"
     iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
     srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) --update-advisor | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
