@@ -7,9 +7,9 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+#  vmImage: ubuntu-latest
 #  vmImage: "vs2017-win2016"
-#  vmImage: windows-latest
+  vmImage: windows-latest
   
 steps:
 - task: Maven@3
@@ -30,7 +30,7 @@ steps:
    targetType: 'inline'
    script: |
     Get-ExecutionPolicy -List
-    Set-ExecutionPolicy -ExecutionPolicy AllSigned -Scope Process -Force
+    Set-ExecutionPolicy AllSigned -Scope Process -Force
     Write-Output "Updated:"
     Get-ExecutionPolicy -List
     $ProgressPreference = "SilentlyContinue"
