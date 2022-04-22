@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ubuntu-18.04
 #  vmImage: "vs2017-win2016"
 #  vmImage: windows-latest
   
@@ -41,7 +41,7 @@ steps:
     targetType: 'inline'
     script: |
      export SRCCLR_API_TOKEN="$(apiToken)"
-     curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA --debug | tee SCA_Results.txt
+     curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
 
 - task: PublishPipelineArtifact@1
   inputs:
