@@ -18,7 +18,7 @@ pipeline {
         }
         stage('SCA-Scan') {
             environment {
-                SRCCLR_API_TOKEN = credentials('apiToken')
+                SRCCLR_API_TOKEN = credentials('SCA_token')
             }
             steps {
                 powershell '''
