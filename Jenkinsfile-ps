@@ -26,7 +26,7 @@ pipeline {
                 pwsh --version
                 cd ${WORKSPACE}
                 pwd
-                pwsh -Command "(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\')" 
+                pwsh -Command "(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\') | Invoke-Expression" 
                 pwsh -Command "srcclr scan"
                 '''
             }
