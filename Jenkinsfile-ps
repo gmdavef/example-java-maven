@@ -21,7 +21,6 @@ pipeline {
                 powershell """
                 cd ${WORKSPACE}
                 Set-ExecutionPolicy AllSigned -Scope Process -Force
-                # $ProgressPreference = "SilentlyContinue"
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
                     iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1')) | srcclr scan .
                 }
