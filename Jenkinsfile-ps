@@ -24,10 +24,10 @@ pipeline {
                 pwsh '''
                 echo 'testSCAtest'
                 pwsh --version
-                echo ${WORKSPACE}
                 cd ${WORKSPACE}
-                pwsh -Command "Set-ExecutionPolicy AllSigned -Scope Process -Force"
-                pwsh -Command "(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\') | srcclr scan"
+                pwd
+                pwsh -Command "(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\')" 
+                pwsh -Command "srcclr scan"
                 '''
             }
         }
