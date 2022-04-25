@@ -21,14 +21,13 @@ pipeline {
                 SRCCLR_API_TOKEN = credentials('SCA_token')
             }
             steps {
-                pwsh '''
-                echo 'testSCAtest'
                 pwsh --version
-                cd ${WORKSPACE}
-                pwd
-                pwsh -Command "(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\') | Invoke-Expression" 
-                pwsh -Command "srcclr scan"
-                '''
+                pwsh ('''
+                  echo 'testSCAtest'
+                  cd ${WORKSPACE}
+                  (New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\') | Invoke-Expression 
+                  srcclr scan
+                ''')
             }
         }
         
