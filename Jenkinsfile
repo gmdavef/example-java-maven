@@ -27,8 +27,8 @@ pipeline {
                         else {
                             powershell '''
                             Set-ExecutionPolicy AllSigned -Scope Process -Force
-                            $ProgressPreference = "silentlyContinue"
-                            iex ((New-Object System.Net.WebClient).DownloadString('https://download.srcclr.com/ci.ps1'))
+                            $ProgressPreference = "SilentlyContinue"
+                            iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
                             srcclr scan --ws 3OOuvgA
                             '''
                         }
