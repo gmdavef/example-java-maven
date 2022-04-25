@@ -18,10 +18,13 @@ pipeline {
         }
         stage('SCA-Scan') {
             steps {
-                powershell '''cd ${WORKSPACE}
+                powershell '''
+                echo 'testSCAtest'
+                cd ${WORKSPACE}
                 $env: SRCCLR_API_TOKEN: $(apiToken)
                 Set-ExecutionPolicy AllSigned -Scope Process -Force
-                iex ((New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\')) | srcclr scan .'''
+                iex ((New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\')) | srcclr scan .
+                '''
             }
         }
         
