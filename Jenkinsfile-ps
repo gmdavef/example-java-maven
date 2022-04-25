@@ -21,13 +21,12 @@ pipeline {
                 SRCCLR_API_TOKEN = credentials('SCA_token')
             }
             steps {
-                pwsh '''
                 echo 'testSCAtest'
                 pwsh --version
+                echo ${WORKSPACE}
                 cd ${WORKSPACE}
-                Set-ExecutionPolicy AllSigned -Scope Process -Force
-                iex ((New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\')) | srcclr scan .
-                '''
+                pwsh -Command ("Set-ExecutionPolicy AllSigned -Scope Process -Force")
+                pwsh -Command ("(New-Object System.Net.WebClient).DownloadString(\'https://download.sourceclear.com/ci.ps1\') | srcclr scan")
             }
         }
         
