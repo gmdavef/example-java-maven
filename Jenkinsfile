@@ -20,10 +20,10 @@ pipeline {
             steps {
                 echo '--- VERACODE SCA SCAN ---'
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
-                    git config --global user.email "dev@company.com"
-                    git config --global user.name "Joe Developer"
                     script {
                         if (isUnix() == true) {
+                            git config --global user.email "dev@company.com"
+                            git config --global user.name "Joe Developer"
                             sh "curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA --pull-request --debug"
                         }
                         else {
