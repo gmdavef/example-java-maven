@@ -18,7 +18,7 @@ pipeline {
         }
         stage('SCA-Scan') {
             steps {
-                echo '---SCA AGENT SCAN---'
+                echo '---VERACODE SCA SCAN---'
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
                     script {
                         if (isUnix() == true) {
