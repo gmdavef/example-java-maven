@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Pull') {
             steps {
-                echo '---PULL---'
+                echo '--- PULL ---'
                 git 'https://github.com/gmdavef/example-java-maven.git'
             }
         }
         stage('Build') {
             steps {
-                echo '---BUILD---'
+                echo '--- BUILD ---'
                 withMaven(maven: 'Mvn3') {
                     sh "mvn clean package"
                 }
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('SCA-Scan') {
             steps {
-                echo '---VERACODE SCA SCAN ---'
+                echo '--- VERACODE SCA SCAN ---'
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
                     script {
                         if (isUnix() == true) {
