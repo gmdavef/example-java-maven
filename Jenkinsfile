@@ -22,7 +22,7 @@ pipeline {
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
                     script {
                         if (isUnix() == true) {
-                            sh "curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA --pull-request"
+                            sh "curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA --pull-request --debug"
                         }
                         else {
                             powershell '''
