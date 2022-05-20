@@ -19,6 +19,8 @@ pipeline {
         stage('SCA-Scan') {
             steps {
                 echo '--- VERACODE SCA SCAN ---'
+                git config --global user.email "dev@company.com"
+                git config --global user.name "Joe Developer"
                 withCredentials([ string(credentialsId: 'SCA_token', variable: 'SRCCLR_API_TOKEN')]) {
                     script {
                         if (isUnix() == true) {
