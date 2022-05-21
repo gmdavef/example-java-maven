@@ -1,4 +1,4 @@
 #Options for pr_on: never | methods | high | medium | low
 pr_on: high
 no_breaking_updates: true
-ignore_closed_prs: false
+ignore_closed_prs: true
