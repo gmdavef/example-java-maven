@@ -27,8 +27,9 @@ steps:
     targetType: 'inline'
     script: |
      export SRCCLR_API_TOKEN="$(apiToken)"
+     export SRCCLR_SCM_TYPE="GITHUB"
      export SRCCLR_SCM_TOKEN="$(scmToken)"
-     curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA --pull-request | tee SCA_Results.txt
+     Curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA --pull-request | tee SCA_Results.txt
 
 - task: PublishPipelineArtifact@1
   inputs:
