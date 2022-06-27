@@ -47,7 +47,7 @@ steps:
      export SRCCLR_SCM_TOKEN="$(scmToken)"
 #     git config --global user.email "ado@company.com"
 #     git config --global user.name "ado"
-#     git checkout master
+     git checkout master
      curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
 
 - task: PublishPipelineArtifact@1
