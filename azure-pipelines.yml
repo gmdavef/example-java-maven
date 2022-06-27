@@ -7,9 +7,9 @@ trigger:
 - master
 
 pool:
-#  vmImage: ubuntu-20.04
+  vmImage: ubuntu-20.04
 #  vmImage: "vs2017-win2016"
-  vmImage: windows-2019
+#  vmImage: windows-2019
 #  vmImage: windows-latest
 
 steps:
@@ -24,31 +24,31 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: PowerShell@2
-  displayName: 'Veracode SCA scan'
-  #env: {SRCCLR_API_TOKEN: $(apiToken), DEBUG: "1"}
-  env: {SRCCLR_API_TOKEN: $(apiToken)}
-  inputs:
-   targetType: 'inline'
-   script: |
-    Set-ExecutionPolicy AllSigned -Scope Process -Force
-    $ProgressPreference = "SilentlyContinue"
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
-    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
-
-#- task: Bash@3
+#- task: PowerShell@2
 #  displayName: 'Veracode SCA scan'
+#  #env: {SRCCLR_API_TOKEN: $(apiToken), DEBUG: "1"}
+#  env: {SRCCLR_API_TOKEN: $(apiToken)}
 #  inputs:
-#    targetType: 'inline'
-#    script: |
-#     export SRCCLR_API_TOKEN="$(apiToken)"
+#   targetType: 'inline'
+#   script: |
+#    Set-ExecutionPolicy AllSigned -Scope Process -Force
+#    $ProgressPreference = "SilentlyContinue"
+#    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+#    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
+#    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
+
+- task: Bash@3
+  displayName: 'Veracode SCA scan'
+  inputs:
+    targetType: 'inline'
+    script: |
+     export SRCCLR_API_TOKEN="$(apiToken)"
 #     export SRCCLR_SCM_TYPE="GITHUB"
 #     export SRCCLR_SCM_TOKEN="$(scmToken)"
 #     git config --global user.email "ado@company.com"
 #     git config --global user.name "ado"
 #     git checkout master
-#     curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
+     curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
 
 - task: PublishPipelineArtifact@1
   inputs:
