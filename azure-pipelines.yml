@@ -8,9 +8,9 @@ trigger:
 
 pool:
   vmImage: ubuntu-20.04
+#  vmImage: windows-latest
 #  vmImage: "vs2017-win2016"
 #  vmImage: windows-2019
-#  vmImage: windows-latest
 
 steps:
 - task: Maven@3
