@@ -44,6 +44,11 @@ steps:
     script: |
      export SRCCLR_API_TOKEN="$(apiToken)"
      curl -sSL https://download.sourceclear.com/ci.sh | bash -s -- scan --ws 3OOuvgA | tee SCA_Results.txt
+    # export SRCCLR_SCM_TYPE="GITHUB"
+    # export SRCCLR_SCM_TOKEN="$(scmToken)"
+    # git config --global user.email "ado@company.com"
+    # git config --global user.name "ado"
+    # git checkout master
 
 - task: PublishPipelineArtifact@1
   inputs:
