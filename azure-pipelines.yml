@@ -32,6 +32,7 @@ steps:
 #   script: |
 #    Set-ExecutionPolicy AllSigned -Scope Process -Force
 #    $ProgressPreference = "SilentlyContinue"
+#    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 #    iex ((New-Object System.Net.WebClient).DownloadString('https://download.sourceclear.com/ci.ps1'))
 #    srcclr scan --ws 3OOuvgA $(Build.SourcesDirectory) | Tee-Object $(System.DefaultWorkingDirectory)/SCA_Results.txt
 
