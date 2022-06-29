@@ -26,7 +26,7 @@ pipeline {
                                 git config --global user.email "jenkins@company.com"
                                 git config --global user.name "Jenkins"
                                 curl -sSL https://download.sourceclear.com/ci.sh | sh -s -- scan --ws 3OOuvgA
-                                echo \"exit code is: \" \$?
+                                echo \$?
                             """    
                         }
                         else {
