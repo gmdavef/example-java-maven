@@ -1,3 +1,5 @@
+name: SCA scan via published Veracode Dependency Scanning action
+
 on: 
   #schedule:
   #  - cron: 15 14 * * 6
