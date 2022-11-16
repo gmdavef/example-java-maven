@@ -24,9 +24,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create-issues: true
           min-cvss-for-issue: 9
-          debug: false          
-          fail-on-cvss: 10    
-          #quick: false
-          #recursive: false
-          #allow-dirty: false
-          #skip-collectors: bower         
+          debug: false
+          quick: false
+          recursive: false
+          allow-dirty: false
