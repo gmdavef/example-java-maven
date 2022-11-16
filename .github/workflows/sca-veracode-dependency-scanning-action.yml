@@ -1,4 +1,4 @@
-name: SCA scan via published Veracode Dependency Scanning action
+name: SCA scan via published GitHub action Veracode Dependency Scanning
 
 on: 
   #schedule:
@@ -20,11 +20,12 @@ jobs:
         uses: 
           veracode/veracode-sca@v1.09
         with:
-          #github_token: ${{ secrets.GITHUB_TOKEN }}
-          #create-issues: true
-          #quick: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create-issues: false
+          min-cvss-for-issue: 9
+          debug: false          
+          #fail-on-cvss: 9    
+          #quick: false
+          #recursive: false
           #allow-dirty: false
-          #recursive: true
-          #fail-on-cvss: 1
-          #min-cvss-for-issue: 1
-          debug: false
+          #skip-collectors: bower         
