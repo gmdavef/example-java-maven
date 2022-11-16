@@ -25,7 +25,7 @@ jobs:
           create-issues: true
           min-cvss-for-issue: 9
           debug: false          
-          #fail-on-cvss: 9    
+          fail-on-cvss: 10    
           #quick: false
           #recursive: false
           #allow-dirty: false
