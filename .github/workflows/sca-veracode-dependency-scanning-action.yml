@@ -22,7 +22,7 @@ jobs:
           veracode/veracode-sca@v1.09
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          create-issues: false
+          create-issues: true
           min-cvss-for-issue: 9
           debug: false          
           #fail-on-cvss: 9    
