@@ -1,0 +1,25 @@
+name: Veracode SCA agent scan
+
+on:
+  repository_dispatch:
+  types: [test]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+
+  SCA_Scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out repository under $GITHUB_WORKSPACE, so job can access it
+      - name: Check out repo 
+        uses: actions/checkout@v2
+
+      # run agent scan on the project
+      - name: SCA Scan
+        env: 
+          SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
+        run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan
+        
