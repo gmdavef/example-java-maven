@@ -2,7 +2,7 @@ name: SCA scan via published GitHub action Veracode Dependency Scanning
 
 on: 
   schedule:
-    - cron: '0 16 * * 5'
+    - cron: '0 17 * * 5'
     
   workflow_dispatch:
 
