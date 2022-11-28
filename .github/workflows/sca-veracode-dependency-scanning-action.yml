@@ -22,7 +22,7 @@ jobs:
           veracode/veracode-sca@v2.0.64
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          create-issues: false
+          create-issues: true
           debug: false
           quick: false
           recursive: false
