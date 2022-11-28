@@ -17,5 +17,8 @@ jobs:
       - name: SCA Scan
         env: 
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
-        run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan --ws 3OOuvgA
-        
+        run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan --ws 3OOuvgA | tee SCA_Results.txt
+      - uses: actions/upload-artifact@v1
+        with:
+          name: SCAScanResults
+          path: SCA_Results.txt  
