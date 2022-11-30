@@ -27,4 +27,4 @@ jobs:
           quick: false
           recursive: false
           allow-dirty: false
-          skip-vms: true
+          skip-vms: false
