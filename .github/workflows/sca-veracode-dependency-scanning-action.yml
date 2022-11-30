@@ -22,8 +22,8 @@ jobs:
           veracode/veracode-sca@v2.0.65
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          create-issues: true
-          debug: true
+          create-issues: false
+          debug: false
           quick: false
           recursive: false
           allow-dirty: false
