@@ -28,7 +28,7 @@ jobs:
           recursive: false
           allow-dirty: false
           skip-vms: false
-      # Note - the kspm file exists only if create-issues=true
+      # Note - there won't be any json file unless create-issues=true
       - name: Store scan results as artifact
         uses: actions/upload-artifact@v3
         with:
