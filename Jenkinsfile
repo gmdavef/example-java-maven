@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo '--- BUILD ---'
                 withMaven(maven: 'Mvn3') {
-                    sh "mvn clean package"
+                    sh "mvn -e clean package"
                 }
             }
         }
