@@ -2,7 +2,7 @@ name: SCA scan via published GitHub action Veracode Dependency Scanning
 
 on: 
   schedule:
-    - cron: '0 17 * * 5'
+    - cron: '0 17 1 * 5'
     
   workflow_dispatch:
 
@@ -19,7 +19,7 @@ jobs:
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
           SRCCLR_WORKSPACE_SLUG: ${{ secrets.SRCCLR_WORKSPACE_SLUG }}
         uses: 
-          veracode/veracode-sca@v2.0.65
+          veracode/veracode-sca@v2.1.6          
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create-issues: false
