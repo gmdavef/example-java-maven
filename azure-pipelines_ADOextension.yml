@@ -29,5 +29,4 @@ steps:
     appName: ExJavaMvn
     minCVSS: 0
   env:
-    SRCCLR_API_TOKEN: $(apiToken)
-    
+    SRCCLR_API_TOKEN: $(apiToken)    
