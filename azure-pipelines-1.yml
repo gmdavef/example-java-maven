@@ -30,4 +30,3 @@ steps:
     minCVSS: 0
   env:
     SRCCLR_API_TOKEN: $(apiToken)
-    
