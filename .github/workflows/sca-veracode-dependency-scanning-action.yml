@@ -13,13 +13,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
       - name: Run Veracode SCA
         env:
           SRCCLR_API_TOKEN: ${{ secrets.SRCCLR_API_TOKEN }}
           SRCCLR_WORKSPACE_SLUG: ${{ secrets.SRCCLR_WORKSPACE_SLUG }}
         uses: 
-          veracode/veracode-sca@v2.1.6          
+          veracode/veracode-sca@v2.1.20          
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create-issues: true
@@ -30,7 +30,7 @@ jobs:
           skip-vms: false
       # Note - there won't be any json file unless create-issues=true
       - name: Store scan results as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: SCAScanResults
           path: scaResults.json
